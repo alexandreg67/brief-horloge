@@ -13,16 +13,16 @@ const AIGUILLESEC = document.querySelector("#second");
 
 // Déplacer les aiguilles 
 function demarrerLaMontre() {
-
+    
+    let time = new Date();
     const minute = 1000 * 60;
-    const hour = minute * 60;
-    const time = new Date();
+    const getMinutes = time.getMinutes()
 
     let secondes = Math.round(time.getTime() / minute*60);
     let minutes = Math.floor(time.getTime() / minute);
-    let hours = Math.floor(time.getTime() / hour);
+    let hours = time.getHours();
 
-    AIGUILLEHR.style.transform = `rotate(${hours*6}deg)`;
+    AIGUILLEHR.style.transform = `rotate(${(hours*30)+(getMinutes/2)}deg)`;
     AIGUILLEMIN.style.transform = `rotate(${minutes*6}deg)`;
     AIGUILLESEC.style.transform = `rotate(${secondes*6}deg)`;
 
